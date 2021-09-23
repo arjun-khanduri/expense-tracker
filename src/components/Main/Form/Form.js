@@ -13,6 +13,7 @@ import {
 }
     from '@material-ui/core'
 import useStyles from './styles'
+import { incomeCategories, expenseCategories } from '../../../constants/categories';
 
 const initialState = {
     amount: '',
@@ -26,6 +27,8 @@ const Form = () => {
     const classes = useStyles()
     const [formData, setFormData] = useState(initialState)
     const { addTransaction } = useContext(ExpenseTrackerContext)
+
+    const selectedType = formData.type === 'Income' ? incomeCategories : expenseCategories
 
     const createTransaction = () => {
         const transaction = { ...formData, amount: formData.amount, id: uuidv4() }
@@ -53,8 +56,7 @@ const Form = () => {
                 <FormControl fullWidth>
                     <InputLabel>Category</InputLabel>
                     <Select value={formData.category} onChange={(e) => setFormData({ ...formData, category: e.target.value })}>
-                        <MenuItem value="business">Business</MenuItem>
-                        <MenuItem value="salary">Salary</MenuItem>
+                        {selectedType.map((category) => <MenuItem key={category.type} value={category.type}>{category.type}</MenuItem>)}
                     </Select>
                 </FormControl>
             </Grid>

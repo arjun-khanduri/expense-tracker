@@ -18,8 +18,8 @@ const initialState = {
     amount: '',
     category: '',
     type: 'Income',
-    date: new Date().toString()
-  };
+    date: new Date()
+};
 
 
 const Form = () => {
@@ -28,7 +28,7 @@ const Form = () => {
     const { addTransaction } = useContext(ExpenseTrackerContext)
 
     const createTransaction = () => {
-        const transaction = { ...formData, id: uuidv4()}
+        const transaction = { ...formData, amount: formData.amount, id: uuidv4() }
         addTransaction(transaction)
         setFormData(initialState)
     }
@@ -64,7 +64,7 @@ const Form = () => {
             <Grid item xs={6}>
                 <TextField type="date" label="Date" fullWidth value={formData.date} onChange={(e) => setFormData({ ...formData, date: e.target.value })} />
             </Grid>
-            <Button className={classes.button} variant="outlined" color="primary" fullWidth>
+            <Button className={classes.button} variant="outlined" color="primary" fullWidth onClick={createTransaction}>
                 Create
             </Button>
         </Grid>

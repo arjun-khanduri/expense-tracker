@@ -15,14 +15,14 @@ import useStyles from './styles'
 
 const List = () => {
     const classes = useStyles()
-    const transactions: any = [
+    const transactions = [
         { id: 1, type: 'Income', category: 'Business', amount: 100, date: new Date() },
         { id: 2, type: 'Expense', category: 'Domestic', amount: 100, date: new Date() },
         { id: 3, type: 'Expense', category: 'Travelling', amount: 100, date: new Date() }
     ]
     return (
         <MUIList dense={false} className={classes.list}>
-            {transactions.map((transaction: any) => (
+            {transactions.map((transaction) => (
                 <Slide direction="down" in mountOnEnter unmountOnExit key={transaction.id} >
                     <ListItem>
                         <ListItemAvatar>

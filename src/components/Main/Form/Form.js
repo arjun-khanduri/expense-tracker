@@ -62,7 +62,7 @@ const Form = () => {
                 </FormControl>
             </Grid>
             <Grid item xs={6}>
-                <TextField type="number" label="Amount" fullWidth value={formData.amount} onChange={(e) => setFormData({ ...formData, amount: e.target.value })} />
+                <TextField type="number" label="Amount" fullWidth value={formData.amount} InputProps={{ inputProps: { min: 1 } }} onChange={(e) => setFormData({ ...formData, amount: e.target.value })} />
             </Grid>
             <Grid item xs={6}>
                 <TextField type="date" label="date" fullWidth value={formData.date} onChange={(e) => setFormData({ ...formData, date: formatDate(e.target.value) })} />

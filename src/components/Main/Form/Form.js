@@ -17,7 +17,7 @@ import { incomeCategories, expenseCategories } from '../../../constants/categori
 import formatDate from '../../../utils/formatDate';
 
 const initialState = {
-    amount: '',
+    amount: 1,
     category: '',
     type: 'Income',
     date: formatDate(new Date())

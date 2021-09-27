@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { ExpenseTrackerContext } from '../../../context/context'
 import {
@@ -32,6 +32,41 @@ const Form = () => {
     const { segment } = useSpeechContext()
 
     const selectedType = formData.type === 'Income' ? incomeCategories : expenseCategories
+
+    useEffect(() => {
+        if (segment) {
+            const intent = segment.intent.intent
+            if (intent === 'add_income')
+                setFormData({ ...formData, type: 'Income' })
+            else if (intent === 'add_expense')
+                setFormData({ ...formData, type: 'Expense' })
+            else if (segment.isFinal && intent === 'create_transaction')
+                return createTransaction()
+            else if (segment.isFinal && intent === 'cancel_transaction')
+                return setFormData(initialState)
+
+            segment.entities.forEach((e) => {
+                const category = `${e.value.charAt(0)}${e.value.slice(1).toLowerCase()}`
+                const type = e.type
+                if (type === 'category') {
+                    if (incomeCategories.map((ic) => ic.type).includes(category)) {
+                        setFormData({ ...formData, type: 'Income', category })
+                    }
+                    else if (expenseCategories.map((ec) => ec.type).includes(category)) {
+                        setFormData({ ...formData, type: 'Expense', category })
+                    }
+                }
+                else if (type === 'amount')
+                    setFormData({ ...formData, amount: e.value })
+                else if (type === 'date')
+                    setFormData({ ...formData, date: e.value })
+            })
+
+            if(segment.isFinal && formData.type && formData.category && formData.date && formData.amount)
+                return createTransaction()
+        }
+        //eslint-disable-next-line
+    }, [segment])
 
     const createTransaction = () => {
         if (Number.isNaN(Number(formData.amount)) || !formData.date.includes('-') || formData.type === '' || formData.category === '')
@@ -90,7 +125,7 @@ const Form = () => {
                     onChange={(e) => setFormData({ ...formData, date: formatDate(e.target.value) })}
                     required />
             </Grid>
-            <Button className={classes.button} variant="outlined" color="primary" fullWidth onClick={createTransaction}>
+            <Button className={classes.button} variant="contained" color="primary" fullWidth onClick={createTransaction}>
                 Create Transaction
             </Button>
         </Grid>

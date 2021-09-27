@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardHeader, CardContent, Typography } from '@material-ui/core';
-import { Doughnut } from 'react-chartjs-2';
+import { Pie } from 'react-chartjs-2';
 import useStyes from './styles';
 import useTransactions from '../../useTransactions';
 
@@ -14,7 +14,7 @@ const Details = ({ title }) => {
                 <Typography variant="h5">
                     INR {total}
                 </Typography>
-                <Doughnut data={chartData} />
+                <Pie data={chartData} />
             </CardContent>
         </Card>
     )

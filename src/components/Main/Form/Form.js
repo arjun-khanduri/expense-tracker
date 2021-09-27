@@ -15,6 +15,7 @@ import {
 import useStyles from './styles'
 import { incomeCategories, expenseCategories } from '../../../constants/categories';
 import formatDate from '../../../utils/formatDate';
+import { useSpeechContext } from '@speechly/react-client';
 
 const initialState = {
     amount: 1,
@@ -28,11 +29,12 @@ const Form = () => {
     const classes = useStyles()
     const [formData, setFormData] = useState(initialState)
     const { addTransaction } = useContext(ExpenseTrackerContext)
+    const { segment } = useSpeechContext()
 
     const selectedType = formData.type === 'Income' ? incomeCategories : expenseCategories
 
     const createTransaction = () => {
-        if(Number.isNaN(Number(formData.amount)) || !formData.date.includes('-') || formData.type === '' || formData.category === '')
+        if (Number.isNaN(Number(formData.amount)) || !formData.date.includes('-') || formData.type === '' || formData.category === '')
             return;
         const transaction = { ...formData, amount: formData.amount, id: uuidv4() }
         addTransaction(transaction)
@@ -43,7 +45,12 @@ const Form = () => {
         <Grid container spacing={2}>
             <Grid item xs={12}>
                 <Typography align="center" variant="subtitle2" gutterBottom>
-                    ...
+                    {segment ? (
+                        <>
+                            {segment.words.map((w) => w.value).join(' ')}
+                        </>
+                    ) : null
+                    }
                 </Typography>
             </Grid>
             <Grid item xs={6}>

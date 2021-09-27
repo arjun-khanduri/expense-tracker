@@ -11,8 +11,8 @@ const Main = () => {
             <CardHeader title="Expense Tracker" />
             <CardContent>
                 <Typography align="center" variant="h5">Total Balance: INR 100</Typography>
-                <Typography variant="subtitle1" style={{ lineHeight: '1.5em', marginTop: '20px' }}>
-                    Try saying: Add income for INR 100...
+                <Typography variant="subtitle1" style={{ lineHeight: '1.5em', marginTop: '20px', textAlign: 'center' }}>
+                    Try saying: "Add expense of Rupees 100 to category Stationary for today"
                 </Typography>
                 <Divider />
                 <Form />

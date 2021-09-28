@@ -8,7 +8,7 @@ export const incomeCategories = [
 
 export const expenseCategories = [
     { type: 'Stationary', amount: 0, color: expenseColors[0] },
-    { type: 'Food & Groceries', amount: 0, color: expenseColors[1] },
+    { type: 'Food and Groceries', amount: 0, color: expenseColors[1] },
     { type: 'Medical', amount: 0, color: expenseColors[2] },
     { type: 'Travelling', amount: 0, color: expenseColors[3] },
     { type: 'Miscellaneous', amount: 0, color: expenseColors[4] },

@@ -1,6 +1,17 @@
-# Getting Started with Create React App
+# Person Expense Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Track your personal expenses with the help of voice commands to store transactions.
+<p text-align="center">
+    <img src="images/Screenshot_1.png" alt="Screenshot_1" height="300px">
+</p>
+
+## Deployment Instructions
+
+1. Clone the repository on your local machine using Git.
+2. Use your terminal to navigate to the local repository using the `cd` command.
+3. Install all dependencies using `yarn start`.
+4. Create a file named `.env.production.local` and add your Speechly API key.
+5. Deploy the application using `yarn start`.
 
 ## Available Scripts
 
@@ -39,8 +50,8 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). <br />
+API used for speech detection [Speechly](https://www.speechly.com/). <br />
+Frontend framework [Material UI](https://mui.com/)

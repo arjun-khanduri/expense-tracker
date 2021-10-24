@@ -53,5 +53,5 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). <br />
-API used for speech detection [Speechly](https://www.speechly.com/). <br />
-Frontend framework [Material UI](https://mui.com/)
+[Speechly](https://www.speechly.com/) was used for speech detection. <br />
+[Material UI](https://mui.com/) was used as the UI framework.

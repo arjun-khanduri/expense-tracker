@@ -1,7 +1,7 @@
 # Person Expense Tracker
 
 Track your personal expenses with the help of voice commands to store transactions.
-<p text-align="center">
+<p align="center">
     <img src="images/Screenshot_1.png" alt="Screenshot_1" height="300px">
 </p>
 
